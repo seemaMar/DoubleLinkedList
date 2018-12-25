@@ -1,0 +1,99 @@
+****************
+* Double Linked List
+* CS221 - 3
+* 11/15/2017
+* Seema Marahatta
+**************** 
+
+OVERVIEW:
+
+  This program allows the user to create a data structure
+  which implements a double linked list. The user does not
+  need to have any knowledge of data structures.
+
+INCLUDED FILES:
+
+  * IndexedUnsortedList.java - Interface for an Iterable, Indexed, Unsorted List ADT.
+  * IUDoubleLinkedList.java - Allows list to be modified
+  * LinearNode.java - Represents a node in a linked list.
+  * ListTester.java - Tests any list from a given option
+  * README - this file
+
+COMPILING AND RUNNING:
+
+  From the directory containing all source files, compile the
+  driver class (and all dependencies) with the command:
+  $ javac ListTester.java
+
+  Run the compile file with the command:
+  $ java ListTester
+  
+ Console output will give the results after the program finishes.
+
+PROGRAM DESIGN AND IMPORTANT CONCEPTS:
+
+  The purpose of this project is to create a functioning double linked list(dll).
+  The nodes of the dll are represented by the LinearNode class which creates all the
+  nodes used in the dll class. The dll class consists of methods in order to alter
+  the existing dll: adding (element of) nodes, removing (element of) nodes etc.
+  The iterator class is set up so that the list can be heavily modified with just 
+  the use of the iterator.
+  ListTester.java is set up with enumarated lists that could be tested. The class
+  runs extensive tests to ensure list testers and methods are behaving as they should.
+  There are scenarios that have been set up which use either list tester methods, or
+  iterator methods. Depending on the length of the output, the ListTester runs each
+  scenario through heaps of tests, compares results to the expected result, and
+  prints the tests that failed. As more tests pass, the likelihood of users facing
+  issues with this list dwindles.
+  
+TESTING:
+
+  In order to test this program, I created iterator tests for each
+  method with varying output lengths. This way, I can be sure that
+  all of my methods are behaving the way they are meant to.
+  I would run tests after writing about two methods, just 
+  so I wouldn't have any errors by the time I was finished writing
+  my program. Although this method was helpful, I was still failing
+  about 3% of my tests when I finished writing the dll class. Since
+  the errors were so minor, I had to use the debugger. Many of my
+  problems arose from poorly constructed scenarios, which were hidden
+  in plain sight.
+  When writing my methods, I ran into a lot of null pointer exceptions
+  because I would not modify the list in proper order. This led to a lot
+  of frustration, and forced me to spend a lot of time rewriting code.
+  The iterator tests gave me a lot of grief, as well. I didn't realize
+  how inaccurate my set method was, until I wrote testers for the list
+  iterator. Instead of setting the given element to the last returned
+  node(lrn), I had simply created a new node, and added it in front of the
+  lrn. Another mistake I made in the iterator class was not incrementing
+  iterModCount/modCount properly, this resulted in a plethora of failed
+  concurrency tests.
+  The program is indeed idiot proof; for every anticipated mistake
+  that could be made by the user, there are exceptions placed properly.
+  This ensures that rather than the program exploding in front of a user,
+  it will tell them why they cannot perform the specific behavior.
+  Since I did not test every possible scenario, it is possible that there
+  are some parts of the program that are penetrable, but as far as I am
+  concerned, it is idiot proof. I often "played" the idiot while testing
+  this program, and have covered most holes.
+
+DISCUSSION:
+ 
+  The most challenging part of this project was setting up the iterator
+  class. Although I understood the functionality of iterators, I hadn't
+  fully grasped how the methods I was writing worked with the iterators.
+  Initially, I wrote the iterator methods as if I were dealing with
+  a specific node. It took a lot of debugging to realize that I had
+  access between nodes. Having the ability to access two nodes made
+  it much easier to change the list.
+  The biggest thing I got out of this project, however, was realizing
+  that the debugger is not, by any means, an enemy. After spending a
+  large portion of a day, trying to find where my remaining 2% error
+  was coming from, I had to buck up and use the debugger. As minds
+  greater than mine have already figured out, the debugger makes
+  catching small errors a lot easier, and less overwhelming.
+  The iterator testers that I wrote also forced me to realize
+  that the methods I had written were not perfect. The most common
+  mistake I caught was forgetting to increment my modCount. This
+  mistake led to me failing quite a large portion of the concurrent
+  modification tests.
